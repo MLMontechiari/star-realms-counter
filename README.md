@@ -49,6 +49,27 @@ npm install
 npm run dev
 ```
 
+## Workflow de Desarrollo
+
+```mermaid
+gitGraph
+    commit id: "Initial commit"
+    branch feat/nueva-funcionalidad
+    checkout feat/nueva-funcionalidad
+    commit id: "feat: add feature"
+    commit id: "test: add tests"
+    checkout main
+    merge feat/nueva-funcionalidad tag: "PR approved"
+    commit id: "Deploy to GitHub Pages"
+```
+
+1. Crear rama desde main: `git checkout -b feat/nueva-funcionalidad`
+2. Hacer cambios y commits siguiendo Conventional Commits
+3. Push de la rama: `git push origin feat/nueva-funcionalidad`
+4. Abrir Pull Request en GitHub
+5. Esperar aprobación del Code Owner (@MLMontechiari)
+6. Merge a main → Deploy automático a GitHub Pages
+
 ## Deployment
 
 El proyecto se despliega automáticamente a GitHub Pages mediante GitHub Actions en cada push a `main`.
