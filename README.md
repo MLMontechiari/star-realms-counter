@@ -49,35 +49,11 @@ npm install
 npm run dev
 ```
 
-## Deployment a GitHub Pages
+## Deployment
 
-### Opción 1: GitHub Actions (Recomendado - Automático)
+El proyecto se despliega automáticamente a GitHub Pages mediante GitHub Actions en cada push a `main`.
 
-1. **Sube el código a GitHub**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/<tu-usuario>/star-realms-counter.git
-   git push -u origin main
-   ```
-
-2. **Configura GitHub Pages**:
-   - Ve a tu repositorio en GitHub
-   - Settings → Pages
-   - Source: GitHub Actions
-
-3. **¡Listo!** Cada push a `main` desplegará automáticamente
-
-### Opción 2: Deploy Manual desde Local
-
-1. **Actualiza el `package.json`**: Cambia `<tu-usuario>` por tu usuario de GitHub
-
-2. **Despliega**:
-   ```bash
-   npm run deploy
-   ```
+**URL**: https://mlmontechiari.github.io/star-realms-counter
 
 ## Tecnologías
 
