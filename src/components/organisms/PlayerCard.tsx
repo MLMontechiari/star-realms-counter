@@ -1,17 +1,11 @@
 import { Input } from '../atoms/Input'
+import { CompactStat } from '../atoms/CompactStat'
 import { Counter } from '../molecules/Counter'
-
-export interface Player {
-  id: number
-  name: string
-  authority: number
-  combat: number
-  trade: number
-}
+import type { Player } from '../../types'
 
 interface PlayerCardProps {
-  player: Player
-  onUpdatePlayer: (playerId: number, field: keyof Player, value: number | string) => void
+  readonly player: Player
+  readonly onUpdatePlayer: (playerId: number, field: keyof Player, value: number | string) => void
 }
 
 export const PlayerCard = ({ player, onUpdatePlayer }: PlayerCardProps) => {
@@ -31,29 +25,31 @@ export const PlayerCard = ({ player, onUpdatePlayer }: PlayerCardProps) => {
           icon="🟢"
           value={player.authority}
           type="authority"
-          allowNegative={true}
+          allowNegative={false}
           onIncrement={(amount) => onUpdatePlayer(player.id, 'authority', player.authority + amount)}
           onDecrement={(amount) => onUpdatePlayer(player.id, 'authority', player.authority - amount)}
         />
         
-        <Counter
-          label="Combat"
-          icon="🎯"
-          value={player.combat}
-          type="combat"
-          onIncrement={(amount) => onUpdatePlayer(player.id, 'combat', player.combat + amount)}
-          onDecrement={(amount) => onUpdatePlayer(player.id, 'combat', player.combat - amount)}
-        />
-        
-        <Counter
-          label="Trade"
-          icon="🪙"
-          value={player.trade}
-          type="trade"
-          onIncrement={(amount) => onUpdatePlayer(player.id, 'trade', player.trade + amount)}
-          onDecrement={(amount) => onUpdatePlayer(player.id, 'trade', player.trade - amount)}
-        />
+        <div className="turn-stats">
+          <CompactStat
+            icon="🎯"
+            value={player.combat}
+            type="combat"
+            onIncrement={() => onUpdatePlayer(player.id, 'combat', player.combat + 1)}
+            onDecrement={() => onUpdatePlayer(player.id, 'combat', Math.max(0, player.combat - 1))}
+          />
+          
+          <CompactStat
+            icon="🪙"
+            value={player.trade}
+            type="trade"
+            onIncrement={() => onUpdatePlayer(player.id, 'trade', player.trade + 1)}
+            onDecrement={() => onUpdatePlayer(player.id, 'trade', Math.max(0, player.trade - 1))}
+          />
+        </div>
       </div>
     </div>
   )
 }
+
+export type { Player }

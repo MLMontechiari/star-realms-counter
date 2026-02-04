@@ -1,13 +1,14 @@
 import { Button } from '../atoms/Button'
+import type { CounterType } from '../../types'
 
 interface CounterProps {
-  label: string
-  icon: string
-  value: number
-  onIncrement: (amount: number) => void
-  onDecrement: (amount: number) => void
-  type: 'authority' | 'combat' | 'trade'
-  allowNegative?: boolean
+  readonly label: string
+  readonly icon: string
+  readonly value: number
+  readonly onIncrement: (amount: number) => void
+  readonly onDecrement: (amount: number) => void
+  readonly type: CounterType
+  readonly allowNegative?: boolean
 }
 
 export const Counter = ({ 

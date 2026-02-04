@@ -2,16 +2,17 @@ import { useState } from 'react'
 import { PlayerSelector } from './components/molecules/PlayerSelector'
 import { TurnActions } from './components/molecules/TurnActions'
 import { PlayerCard, type Player } from './components/organisms/PlayerCard'
+import type { PlayerCount } from './types'
 import './App.css'
 
 function App() {
-  const [numPlayers, setNumPlayers] = useState(2)
+  const [numPlayers, setNumPlayers] = useState<PlayerCount>(2)
   const [players, setPlayers] = useState<Player[]>([
     { id: 1, name: 'Player 1', authority: 50, combat: 0, trade: 0 },
     { id: 2, name: 'Player 2', authority: 50, combat: 0, trade: 0 }
   ])
 
-  const updatePlayerCount = (count: number) => {
+  const updatePlayerCount = (count: PlayerCount) => {
     setNumPlayers(count)
     const newPlayers: Player[] = []
     for (let i = 1; i <= count; i++) {
@@ -60,7 +61,7 @@ function App() {
         />
       </header>
       
-      <div className="players-grid">
+      <div className="players-grid" data-players={numPlayers}>
         {players.map(player => (
           <PlayerCard
             key={player.id}

@@ -1,8 +1,10 @@
+import type { ButtonVariant } from '../../types'
+
 interface ButtonProps {
-  onClick: () => void
-  children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'player'
-  active?: boolean
+  readonly onClick: () => void
+  readonly children: React.ReactNode
+  readonly variant?: ButtonVariant
+  readonly active?: boolean
 }
 
 export const Button = ({ onClick, children, variant = 'secondary', active = false }: ButtonProps) => {
