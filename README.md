@@ -1,0 +1,99 @@
+# Star Realms Counter 🌌
+
+Contador web para el juego de cartas Star Realms con soporte para 1-4 jugadores.
+
+## Características
+
+- ✨ Soporte para 1-4 jugadores
+- 🎯 Contadores de Authority, Combat y Trade
+- 🔄 Reset de turno (Combat/Trade)
+- 🎮 Nueva partida (resetea todo)
+- 📱 Diseño responsive
+- 🌌 Temática espacial
+
+## Conventional Commits
+
+Este proyecto usa [Conventional Commits](https://www.conventionalcommits.org/) para generar el CHANGELOG automáticamente.
+
+**Formato de commits:**
+```
+<type>(<scope>): <subject>
+```
+
+**Tipos:**
+- `feat`: Nueva funcionalidad
+- `fix`: Corrección de bug
+- `docs`: Cambios en documentación
+- `style`: Cambios de formato (no afectan el código)
+- `refactor`: Refactorización de código
+- `perf`: Mejoras de rendimiento
+- `test`: Agregar o modificar tests
+- `chore`: Tareas de mantenimiento
+
+**Ejemplos:**
+```bash
+git commit -m "feat: add player selector for 1-4 players"
+git commit -m "fix: prevent negative combat values"
+git commit -m "docs: update README with deployment instructions"
+```
+
+**Generar nueva versión y CHANGELOG:**
+```bash
+npm run release
+```
+
+## Desarrollo Local
+
+```bash
+npm install
+npm run dev
+```
+
+## Deployment a GitHub Pages
+
+### Opción 1: GitHub Actions (Recomendado - Automático)
+
+1. **Sube el código a GitHub**:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/<tu-usuario>/star-realms-counter.git
+   git push -u origin main
+   ```
+
+2. **Configura GitHub Pages**:
+   - Ve a tu repositorio en GitHub
+   - Settings → Pages
+   - Source: GitHub Actions
+
+3. **¡Listo!** Cada push a `main` desplegará automáticamente
+
+### Opción 2: Deploy Manual desde Local
+
+1. **Actualiza el `package.json`**: Cambia `<tu-usuario>` por tu usuario de GitHub
+
+2. **Despliega**:
+   ```bash
+   npm run deploy
+   ```
+
+## Tecnologías
+
+- React 19
+- TypeScript
+- Vite
+- Atomic Design Pattern
+
+## Estructura del Proyecto
+
+```
+src/
+├── components/
+│   ├── atoms/        # Componentes básicos (Button, Input, Modal)
+│   ├── molecules/    # Combinaciones (Counter, PlayerSelector, TurnActions)
+│   └── organisms/    # Secciones completas (PlayerCard)
+├── App.tsx           # Template principal
+└── App.css           # Estilos globales
+```
